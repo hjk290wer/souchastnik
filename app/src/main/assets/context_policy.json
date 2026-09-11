@@ -1,0 +1,36 @@
+{
+  "version":"1.0",
+  "principle":"A trigger only adds candidate articles. It never establishes an offense.",
+  "required_context": [
+    "speaker_action",
+    "target_or_object",
+    "modality_or_intent",
+    "publicity_or_recipient_scope",
+    "time_or_repetition_when_relevant",
+    "qualifying_circumstances_when_relevant"
+  ],
+  "context_classes": {
+    "assertion": ["утверждение", "сообщение как факт", "распространяет", "опубликовал", "выложил"],
+    "incitement": ["призывает", "зовет", "требует", "агитирует", "призываю"],
+    "threat": ["угрожает", "обещает причинить вред", "требует под угрозой"],
+    "distribution": ["отправил", "разослал", "опубликовал", "поделился", "дал ссылку", "залил"],
+    "coordination": ["организовал", "координирует", "собирает", "вербует", "назначает"],
+    "sale_or_offer": ["продает", "предлагает купить", "принимает заказы", "сбывает", "оказывает услугу"]
+  },
+  "negative_contexts": [
+    "цитата с осуждением",
+    "пересказ новости без собственного утверждения",
+    "вопрос или предположение",
+    "сатирический/иронический контекст без иных признаков состава",
+    "учебное или исследовательское обсуждение",
+    "историческое описание",
+    "опровержение или критика исходного высказывания",
+    "сообщение о действиях третьего лица без присоединения к ним"
+  ],
+  "judge_instruction":"Explain which exact words form the legally relevant action, who is the subject/target, whether publication/message is public or private when that matters, and which qualifying facts are present or absent. If these facts cannot be established from text, prefer NONE or a lower-confidence candidate rather than asserting a violation.",
+  "confidence_policy": {
+    "high": "The text itself contains the action plus the material context needed for the candidate.",
+    "medium": "Strong clues exist but one legally important fact is missing or ambiguous.",
+    "low": "Only topic words or emotional language are present. Do not surface as a likely offense."
+  }
+}
