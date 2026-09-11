@@ -1,0 +1,15 @@
+{
+  "_source": "Starter dataset only; verify every status against the current official register before release.",
+  "templates": {
+    "agent": "({NAME} ПРИЗНАН ИНОСТРАННЫМ АГЕНТОМ И ВКЛЮЧЕН В РЕЕСТР ИНОСТРАННЫХ АГЕНТОВ МИНИСТЕРСТВА ЮСТИЦИИ РОССИЙСКОЙ ФЕДЕРАЦИИ)",
+    "meta": "({NAME} ПРИНАДЛЕЖИТ КОМПАНИИ META, ПРИЗНАННОЙ ЭКСТРЕМИСТСКОЙ)",
+    "blocked": "({NAME} — СЕРВИС, ДОСТУП К КОТОРОМУ ОГРАНИЧЕН НА ТЕРРИТОРИИ РОССИЙСКОЙ ФЕДЕРАЦИИ)"
+  },
+  "agents": [],
+  "services": [
+    {"name":"Instagram","forms":["instagram","инстаграм"],"exact":["инста","инст"],"strict":false,"kind":"meta"},
+    {"name":"Facebook","forms":["facebook","фейсбук"],"exact":["фб"],"strict":false,"kind":"meta"},
+    {"name":"Telegram","forms":["telegram","телеграм"],"exact":["тг"],"strict":false,"kind":"blocked"},
+    {"name":"X","forms":["x.com"],"exact":["X"],"strict":true,"kind":"blocked"}
+  ]
+}
