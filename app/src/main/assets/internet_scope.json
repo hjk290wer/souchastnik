@@ -1,0 +1,7 @@
+{
+  "version":"0.3-test",
+  "policy":"Only include offenses where an online post, message, comment, file, link, channel, account, or other network action can itself constitute the act, an explicit qualifying circumstance, or the direct means of dissemination/involvement.",
+  "false_positive_policy":"Generic words alone are insufficient. Prefer phrase-level triggers and require action/context words where possible.",
+  "excluded_examples":["illegal hunting","illegal logging","road traffic violations","water pollution","physical assault without online recruitment/threat/publication element"],
+  "candidate_articles":["150","151","207.2","230","230.3","239","240","241","242","242.1","244","245","272","272.1","273","274","274.1","274.2","274.3","274.4","274.5","275.1","276.1","280","280.1","280.3","280.4","282","282.1","282.2","282.3","282.4","284.1","284.2","284.3","354","354.1"]
+}
