@@ -22,6 +22,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+      - name: Bootstrap pinned llama.cpp
+        shell: bash
+        run: |
+          set -euo pipefail
+          pin="$(sed -n 's/^PIN=//p' tools/llama-cpp-pin.txt | tail -n1)"
+          test -n "$pin"
+          mkdir -p third_party
+          rm -rf third_party/llama.cpp
+          git clone --no-checkout https://github.com/ggml-org/llama.cpp third_party/llama.cpp
+          git -C third_party/llama.cpp fetch --depth 1 origin "$pin"
+          git -C third_party/llama.cpp checkout --detach "$pin"
+          test -f third_party/llama.cpp/CMakeLists.txt
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
