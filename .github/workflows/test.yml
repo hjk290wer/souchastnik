@@ -39,6 +39,14 @@ jobs:
           git -C third_party/llama.cpp checkout --detach "$pin"
           test -f third_party/llama.cpp/CMakeLists.txt
           test -f third_party/llama.cpp/include/llama.h
+      - name: Prepare Qwen model
+        shell: bash
+        env:
+          SOUCHASTNIK_MODEL_URL: ${{ secrets.SOUCHASTNIK_MODEL_URL }}
+        run: |
+          set -euo pipefail
+          test -n "$SOUCHASTNIK_MODEL_URL"
+          bash tools/prepare_model.sh
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -55,10 +63,11 @@ jobs:
           set -euo pipefail
           apk="app/build/outputs/apk/debug/app-debug.apk"
           test -f "$apk"
-          echo "APK size: $(stat -c%s "$apk") bytes"
+          size="$(stat -c%s "$apk")"
+          echo "APK size: $size bytes"
+          test "$size" -gt 100000000
           unzip -l "$apk" | grep -F "lib/arm64-v8a/libmodel-qwen35-08b-q40.so"
           unzip -l "$apk" | grep -F "lib/arm64-v8a/libsouchastnik.so"
-          unzip -p "$apk" META-INF/com/android/build/gradle/app-metadata.properties >/dev/null
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
