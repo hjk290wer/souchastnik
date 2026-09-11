@@ -1,0 +1,1 @@
+Place the Qwen3.5-0.8B Q4_0 model here before a local release build. CI deliberately refuses to publish a debug APK without the model.
