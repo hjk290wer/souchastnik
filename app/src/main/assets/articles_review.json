@@ -1,0 +1,15 @@
+{
+  "policy": "include_only_if_online_text/post/message/file/link can be the act, a qualifying method, or explicit public dissemination element",
+  "excluded_examples": [
+    "205 without online/publication element",
+    "258 illegal hunting",
+    "260 illegal logging",
+    "264 traffic offences",
+    "250 water pollution"
+  ],
+  "notes": [
+    "A classifier candidate is not a legal conclusion.",
+    "For many articles the online context alone is insufficient: intent, public character, prior administrative punishment, protected data source, harm and other corpus elements must be checked by the model.",
+    "Internet relevance should not be inferred merely because evidence can exist online."
+  ]
+}
