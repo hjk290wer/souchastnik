@@ -19,9 +19,12 @@ jobs:
         run: python tools/relevance_gate.py
 
   android:
+    needs: dictionaries
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: false
       - name: Bootstrap pinned llama.cpp
         shell: bash
         run: |
@@ -35,6 +38,7 @@ jobs:
           git -C third_party/llama.cpp fetch --depth 1 origin "$pin"
           git -C third_party/llama.cpp checkout --detach "$pin"
           test -f third_party/llama.cpp/CMakeLists.txt
+          test -f third_party/llama.cpp/include/llama.h
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
